@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="index.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "style.css" />
+    <title>Regex Search</title>
+</head>
+<body>
+
+    <h1>The Office Filter</h1>
+
+    <p>We will be using regex to improve our search results.</p>
+    <p>First, we'll check if any of the names includes the input. If it does, skip regex. Otherwise, move on to regex.</p>
+    <p>Our regex will check the first if any of the input letters match the first three letters of any name (in any order).</p>
+    <p>For example, if someone types 'pam', they will return 'Pam' in the search results without using our regex.</p> 
+    <p>If, however, they type 'apm' it's very possible that they MEANT to type 'pam'.</p> 
+    <p>Just because the literal string 'apm' is not in our collection doesn't mean we shouldn't render anything.</p>
+    <div class="containerDiv">
+        <input type='text' onkeyup="onChange();"/> 
+        <!-- <div id="didYou">
+            Did you mean?
+            <p></p>
+            <button onclick="checkName();"></button>
+        </div> -->
+
+        <div id="nameContainer"></div>
+    </div>
+    
+</body>
+</html>

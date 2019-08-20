@@ -20,28 +20,24 @@ const office = [
 var container = document.getElementById('nameContainer');
 
 onChange = () =>{
-    var str = event.target.value.toLowerCase()
-    var arr = office.filter((x)=>{
-        if (x.toLowerCase().includes(str)){
-            return x
-        }
-        if (checkName(x.toLowerCase(), str)){
-            return x
-        }
+    var str = event.target.value.toLowerCase().substring(0, 3)
+    var filteredArr = office.filter((x)=>{
+        var xSub = x.substring(0, 3).toLowerCase()
+        return x.toLowerCase().includes(str) || checkName(xSub, str)
     })
-    if (arr.length > 0){
-        appendNodes(arr)
+    if (filteredArr.length > 0){
+        appendNodes(filteredArr)
     } else {
        appendNodes("no results")
     }
 }
 
 checkName = (name, str) =>{
-    var firstThreeLettersStr = str.substring(0, 3)
-    var pattern = firstThreeLettersStr.split("").map((x)=>{return `(?=.*${x})`}).join("");
+
+    var pattern = str.split("").map((x)=>{return `(?=.*${x})`}).join("");
     var regex = new RegExp(`${pattern}`, "g")
-    var firstThreeLettersName = name.substring(0, 3)
-    return firstThreeLettersName.match(regex);
+
+    return name.match(regex);
 }
 
 appendNodes = (arr) =>{
